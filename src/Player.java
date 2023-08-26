@@ -6,13 +6,15 @@ public class Player {
     private int money;
     private String playerName;
     private String charName;
+    private Inventory inventory;
 
     public Player(String playerName){
         this.playerName = playerName;
+        this.inventory = new Inventory();
     }
 
     public int getDamage() {
-        return damage;
+        return damage + this.getInventory().getWeapon().getDamage();
     }
 
     public void setDamage(int damage) {
@@ -51,9 +53,20 @@ public class Player {
         this.charName = charName;
     }
 
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
+    }
+
+    public void printPlayerInfo(){
+        System.out.println("\n" + this.getPlayerName() + " Kalan can : " + this.getHealth() + " Damage : " + this.getDamage() + " elindeki silah : " + this.getInventory().getWeapon().getWeaponName() + "\n");
+    }
     public void selectChar(){
         GameCharacter[] Character = {new Samurai(), new Archer(), new Knight()};
-        System.out.println("<<Karakterler>>");
+        System.out.println("\n<<Karakterler>>\n");
         for (GameCharacter characters : Character
              ) {
             System.out.println("ID : " + characters.getId() +"\t Karakter : " +  characters.getPlayerName() + "\t Hasar : " + characters.getDamage() + "\t Sağlık : " + characters.getHealth() + "\t Para : " + characters.getMoney());
@@ -86,22 +99,5 @@ public class Player {
         this.setCharName(character.getPlayerName());
     }
 
-    public void selectLocation(){
-        Location location = null;
-        System.out.println("Lütfen oynamak istediğiniz lokasyonu seçiniz");
-        System.out.println("<<Bölgeler>>\n1- Safe House\n2- Tool Store");
-        int selectLocation = input.nextInt();
-        switch (selectLocation){
-            case 1:
-                location = new SafeHouse(this); //new Player()
-                break;
-            case 2:
-                location = new ToolStore(this);
-                break;
-            default:
-                location = new SafeHouse(this);
-        }
-        location.onLocation();
-    }
 
 }
