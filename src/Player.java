@@ -3,6 +3,7 @@ public class Player {
     Scanner input = new Scanner(System.in);
     private int damage;
     private int health;
+    private int originalHealth;
     private int money;
     private String playerName;
     private String charName;
@@ -26,6 +27,9 @@ public class Player {
     }
 
     public void setHealth(int health) {
+        if (health < 0){
+            health = 0;
+        }
         this.health = health;
     }
 
@@ -99,9 +103,16 @@ public class Player {
     public void initPlayer(GameCharacter character){
         this.setDamage(character.getDamage());
         this.setHealth(character.getHealth());
+        this.setOriginalHealth(character.getHealth());
         this.setMoney(character.getMoney());
         this.setCharName(character.getPlayerName());
     }
 
+    public int getOriginalHealth() {
+        return originalHealth;
+    }
 
+    public void setOriginalHealth(int originalHealth) {
+        this.originalHealth = originalHealth;
+    }
 }
