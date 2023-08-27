@@ -14,7 +14,7 @@ public class Game {
         Location location = null;
         while (true){
             System.out.println("\nLütfen oynamak istediğiniz lokasyonu seçiniz\n");
-            System.out.println("<<Bölgeler>>\n1- Safe House\n2- Tool Store\n3- Çıkş Yap");
+            System.out.println("<<Bölgeler>>\n1- Safe House\n2- Tool Store\n3- Mağaraya Git\n4- Nehire Git\n5- Ormana Git\n6- Çıkş Yap");
             int selectLocation = input.nextInt();
             switch (selectLocation){
                 case 1:
@@ -24,6 +24,15 @@ public class Game {
                     location = new ToolStore(player);
                     break;
                 case 3:
+                    location = new Cave(player);
+                    break;
+                case 4:
+                    location = new River(player);
+                    break;
+                case 5:
+                    location = new Forest(player);
+                    break;
+                case 6:
                     location = null;
                     break;
                 default:
@@ -37,8 +46,6 @@ public class Game {
                 System.out.println("Maalesef öldünüz :(");
                 break;
             }
-
-
         }
     }
 }
