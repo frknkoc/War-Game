@@ -14,7 +14,7 @@ public class Game {
         Location location = null;
         while (true){
             System.out.println("\nLütfen oynamak istediğiniz lokasyonu seçiniz\n");
-            System.out.println("<<Bölgeler>>\n1- Safe House\n2- Tool Store");
+            System.out.println("<<Bölgeler>>\n1- Safe House\n2- Tool Store\n3- Çıkş Yap");
             int selectLocation = input.nextInt();
             switch (selectLocation){
                 case 1:
@@ -23,8 +23,15 @@ public class Game {
                 case 2:
                     location = new ToolStore(player);
                     break;
+                case 3:
+                    location = null;
+                    break;
                 default:
                     location = new SafeHouse(player);
+            }
+            if (location == null){
+                System.out.println("Oyundan çıkış yaptınız...");
+                break;
             }
             if (!location.onLocation()){
                 System.out.println("Maalesef öldünüz :(");

@@ -62,28 +62,32 @@ public class Player {
     }
 
     public void printPlayerInfo(){
-        System.out.println("\n" + this.getPlayerName() + " Kalan can : " + this.getHealth() + " Damage : " + this.getDamage() + " elindeki silah : " + this.getInventory().getWeapon().getWeaponName() + "\n");
+        System.out.println("\n" + this.getPlayerName() + " \t" +
+                " Kalan can : " + this.getHealth() + " Damage : " +
+                this.getDamage() + " Elindeki silah : " +
+                this.getInventory().getWeapon().getWeaponName() + " \t" +
+                 " Zırh : " +
+                this.getInventory().getArmor().getName() + " \t" +
+                " Blok : " +
+                this.getInventory().getArmor().getBlock() +"\n");
     }
     public void selectChar(){
         GameCharacter[] Character = {new Samurai(), new Archer(), new Knight()};
         System.out.println("\n<<Karakterler>>\n");
         for (GameCharacter characters : Character
              ) {
-            System.out.println("ID : " + characters.getId() +"\t Karakter : " +  characters.getPlayerName() + "\t Hasar : " + characters.getDamage() + "\t Sağlık : " + characters.getHealth() + "\t Para : " + characters.getMoney());
+            System.out.println( + characters.getId() +"- \t Karakter : " +  characters.getPlayerName() + "\t Hasar : " + characters.getDamage() + "\t Sağlık : " + characters.getHealth() + "\t Para : " + characters.getMoney());
         }
         int selectChar = input.nextInt();
         switch (selectChar){
             case 1:
                 initPlayer(new Samurai());
-
                 break;
             case 2:
                 initPlayer(new Archer());
-
                 break;
             case 3:
                 initPlayer(new Knight());
-
                 break;
             default:
                 initPlayer(new Samurai());
